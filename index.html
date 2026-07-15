@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Раmaзан Тургaнбаев — Информатика Мұғалімі · Веб Әзірлеуші · AI Маманы</title>
+<meta name="description" content="Заманауи білім беру, бағдарламалық жасақтама, жасанды интеллект және білім беру технологияларына маманданған информатика мұғалімі.">
+<meta name="author" content="Ramazan Turganbayev">
+<link rel="canonical" href="https://ramazanturganbayev.com">
+<link rel="icon" href="favicon.ico">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e8f4fd">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<style>
+/* ========= LIGHT BLUE THEME OVERRIDE ========= */
+:root {
+  --bg:           #f0f7ff;
+  --bg-2:         #e3f0fc;
+  --bg-3:         #d4e8fa;
+  --surface:      rgba(255,255,255,0.75);
+  --surface-2:    rgba(255,255,255,0.55);
+  --border:       rgba(100,160,220,0.25);
+  --text-primary: #0d2a45;
+  --text-sec:     #3a6080;
+  --text-muted:   #6a90b0;
+  --accent:       #2882c8;
+  --accent-2:     #1a6ab0;
+  --accent-glow:  rgba(40,130,200,0.18);
+  --gold:         #2882c8;
+  --grad-hero:    linear-gradient(135deg,#c8e4f9 0%,#dff0ff 50%,#b8d8f5 100%);
+  --shadow:       0 4px 24px rgba(40,100,180,0.10);
+  --shadow-lg:    0 8px 40px rgba(40,100,180,0.15);
+  --radius:       14px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* -------- LOADER -------- */
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #e8f4fd;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .4s;
+}
+.loader.hide { opacity: 0; pointer-events: none; }
+.loader-inner { text-align: center; }
+.loader-mark {
+  display: block; font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem;
+}
+.loader-bar {
+  width: 180px; height: 3px; background: var(--bg-3); border-radius: 4px; overflow: hidden; margin: 0 auto .6rem;
+}
+.loader-bar span { display: block; height: 100%; background: var(--accent); width: 0; transition: width .1s; }
+.loader-pct { font-size: .8rem; color: var(--text-muted); }
+
+/* -------- HEADER -------- */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  background: rgba(240,247,255,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+.site-header.scrolled { box-shadow: var(--shadow); }
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+  height: 64px; display: flex; align-items: center; gap: 1.5rem;
+}
+.logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--text-primary); }
+.logo-mark {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: .9rem;
+}
+.logo-text { font-weight: 600; font-size: .95rem; }
+.main-nav { flex: 1; }
+.main-nav ul { list-style: none; display: flex; gap: .25rem; }
+.main-nav a {
+  text-decoration: none; color: var(--text-sec);
+  font-size: .875rem; font-weight: 500;
+  padding: .4rem .75rem; border-radius: 8px;
+  transition: color .2s, background .2s;
+}
+.main-nav a:hover { color: var(--accent); background: var(--bg-3); }
+.header-actions { display: flex; align-items: center; gap: .75rem; }
+.lang-switch { display: flex; gap: .25rem; }
+.lang-btn {
+  padding: .25rem .55rem; border: 1px solid var(--border); background: transparent;
+  border-radius: 6px; font-size: .75rem; font-weight: 600; cursor: pointer;
+  color: var(--text-muted); transition: all .2s;
+}
+.lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-sm {
+  padding: .4rem .9rem; border-radius: 8px; font-size: .8rem;
+  background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; border: none; cursor: pointer;
+  transition: background .2s;
+}
+.btn-sm:hover { background: var(--accent-2); }
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: .4rem;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform .3s; }
+
+/* -------- SCROLL PROGRESS -------- */
+.scroll-progress {
+  position: fixed; top: 64px; left: 0; height: 2px; background: var(--accent); z-index: 901; width: 0; transition: width .1s;
+}
+
+/* -------- HERO -------- */
+.hero {
+  min-height: 100svh; display: flex; align-items: center;
+  background: var(--grad-hero);
+  position: relative; overflow: hidden; padding-top: 80px;
+}
+.hero::before {
+  content: ''; position: absolute; top: -30%; right: -10%; width: 70%; height: 120%;
+  background: radial-gradient(ellipse at center, rgba(40,130,200,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+}
+.eyebrow {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 1rem;
+}
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.hero-name {
+  font-family: var(--font-display); font-size: clamp(2.6rem,6vw,4.5rem);
+  font-weight: 700; line-height: 1.08; margin-bottom: 1rem; color: var(--text-primary);
+}
+.hero-name-line { display: block; }
+.hero-name-accent { color: var(--accent); }
+.hero-role {
+  font-size: 1.1rem; color: var(--text-sec); margin-bottom: 1.25rem; height: 1.6em;
+}
+.typed-role { font-weight: 600; color: var(--accent); }
+.type-caret { animation: blink 1s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+.hero-desc { color: var(--text-sec); max-width: 520px; margin-bottom: 2rem; font-size: .95rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.btn-primary {
+  padding: .75rem 1.75rem; border-radius: 10px;
+  background: var(--accent); color: #fff;
+  text-decoration: none; font-weight: 600; font-size: .9rem;
+  transition: background .2s, transform .2s; display: inline-block;
+}
+.btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); }
+.btn-outline {
+  padding: .75rem 1.75rem; border-radius: 10px;
+  border: 2px solid var(--accent); color: var(--accent);
+  text-decoration: none; font-weight: 600; font-size: .9rem;
+  transition: all .2s; display: inline-block;
+}
+.btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+.btn-text {
+  padding: .75rem .5rem; color: var(--text-sec);
+  text-decoration: none; font-weight: 500; font-size: .9rem;
+  transition: color .2s; display: inline-block;
+}
+.btn-text:hover { color: var(--accent); }
+.hero-portrait { position: relative; }
+.portrait-frame {
+  width: 240px; height: 290px; border-radius: 20px; overflow: hidden;
+  border: 3px solid rgba(40,130,200,.25);
+  box-shadow: var(--shadow-lg);
+}
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; }
+.img-fallback { background: var(--bg-3); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: .85rem; }
+.portrait-badge {
+  position: absolute; bottom: 16px; left: -16px;
+  background: #fff; border-radius: 12px;
+  padding: .5rem .9rem; box-shadow: var(--shadow);
+  text-align: center; border: 1px solid var(--border);
+}
+.portrait-badge-2 { left: auto; right: -16px; bottom: 70px; }
+.badge-num { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--accent); }
+.badge-label { font-size: .65rem; color: var(--text-muted); line-height: 1.3; }
+
+/* -------- CONTAINER -------- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* -------- SECTION -------- */
+.section { padding: 5rem 0; }
+.section:nth-child(even) { background: var(--bg-2); }
+.section-head { margin-bottom: 3rem; }
+.section-head.center { text-align: center; }
+.section-eyebrow {
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: .6rem;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(1.7rem,3.5vw,2.6rem);
+  font-weight: 700; line-height: 1.2; color: var(--text-primary);
+}
+.section-sub { margin-top: .75rem; color: var(--text-sec); max-width: 540px; }
+.section-head.center .section-sub { margin: .75rem auto 0; }
+
+/* -------- GLASS CARD -------- */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+
+/* -------- ABOUT -------- */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start;
+}
+.about-image-frame {
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg);
+  border: 2px solid var(--border);
+}
+.about-image-frame img { width: 100%; height: 340px; object-fit: cover; }
+.about-lede { font-size: 1.08rem; font-weight: 500; color: var(--text-primary); margin-bottom: 1rem; }
+.about-copy p { color: var(--text-sec); margin-bottom: .9rem; }
+.about-values { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 1.5rem 0; }
+.value-card { padding: 1.25rem; }
+.value-icon { font-size: 1.1rem; color: var(--accent); display: block; margin-bottom: .5rem; }
+.value-card h3 { font-size: .9rem; font-weight: 700; margin-bottom: .35rem; }
+.value-card p { font-size: .82rem; color: var(--text-sec); }
+.about-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tag {
+  padding: .3rem .8rem; border-radius: 20px;
+  background: var(--bg-3); border: 1px solid var(--border);
+  font-size: .78rem; font-weight: 600; color: var(--accent);
+}
+
+/* -------- STATISTICS -------- */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 1.25rem; }
+.stat-card {
+  padding: 1.75rem 1rem; text-align: center;
+}
+.stat-card .stat-num { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; color: var(--accent); }
+.stat-card .stat-suffix { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+.stat-card p { font-size: .82rem; color: var(--text-sec); margin-top: .35rem; }
+
+/* -------- SKILLS -------- */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem; }
+.skill-category { padding: 1.5rem; }
+.skill-category h3 { font-size: .85rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem; letter-spacing: .06em; text-transform: uppercase; }
+.skill-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+.skill-row span { font-size: .85rem; font-weight: 500; color: var(--text-primary); min-width: 80px; }
+.skill-track { flex: 1; height: 6px; background: var(--bg-3); border-radius: 4px; overflow: hidden; }
+.skill-fill { height: 100%; background: var(--accent); border-radius: 4px; width: 0; transition: width 1s cubic-bezier(.4,0,.2,1); }
+.skill-row em { font-size: .75rem; color: var(--text-muted); font-style: normal; min-width: 34px; text-align: right; }
+
+/* -------- EXPERIENCE TIMELINE -------- */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--bg-3);
+}
+.timeline-item { position: relative; padding-bottom: 2.5rem; }
+.timeline-dot {
+  position: absolute; left: -2rem; top: .3rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); border: 3px solid var(--bg);
+  transform: translateX(-5px);
+}
+.timeline-card { padding: 1.25rem 1.5rem; }
+.timeline-date { font-size: .78rem; font-weight: 700; color: var(--accent); letter-spacing: .05em; }
+.timeline-card h3 { font-size: 1rem; font-weight: 700; margin: .3rem 0 .2rem; color: var(--text-primary); }
+.timeline-org { font-size: .85rem; color: var(--text-sec); margin-bottom: .5rem; font-weight: 500; }
+.timeline-desc { font-size: .875rem; color: var(--text-sec); }
+
+/* -------- EXPERIENCE PHOTOS -------- */
+.exp-photos { margin-top: 2.5rem; }
+.exp-photos-title { font-size: .85rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; }
+.exp-photos-group { margin-bottom: 2rem; }
+.exp-photos-group h4 { font-size: .9rem; font-weight: 600; color: var(--text-primary); margin-bottom: .75rem; }
+.exp-photos-group p { font-size: .8rem; color: var(--text-muted); margin-bottom: .75rem; }
+.exp-photo-row { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 1rem; }
+.exp-photo-item {
+  border-radius: 10px; overflow: hidden; box-shadow: var(--shadow);
+  border: 1.5px solid var(--border); aspect-ratio: 4/3; cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+.exp-photo-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-lg); }
+.exp-photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* -------- PROJECTS -------- */
+.projects-controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 2rem; }
+.project-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.filter-btn {
+  padding: .35rem .9rem; border-radius: 20px;
+  border: 1.5px solid var(--border); background: transparent;
+  font-size: .8rem; font-weight: 600; cursor: pointer; color: var(--text-sec);
+  transition: all .2s;
+}
+.filter-btn.active, .filter-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; }
+.project-card {
+  padding: 1.5rem; border-radius: var(--radius);
+  background: var(--surface); border: 1.5px solid var(--border);
+  box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; cursor: pointer;
+}
+.project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.project-tag {
+  display: inline-block; padding: .25rem .7rem; border-radius: 20px;
+  background: var(--bg-3); font-size: .72rem; font-weight: 700;
+  color: var(--accent); margin-bottom: .75rem; text-transform: uppercase; letter-spacing: .05em;
+}
+.project-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; color: var(--text-primary); }
+.project-card p { font-size: .85rem; color: var(--text-sec); }
+.project-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+.project-stack span {
+  padding: .2rem .55rem; background: var(--bg-3); border-radius: 4px;
+  font-size: .72rem; color: var(--text-muted); font-weight: 500;
+}
+
+/* -------- MODAL -------- */
+.modal { position: fixed; inset: 0; z-index: 9000; display: none; align-items: center; justify-content: center; padding: 1rem; }
+.modal.open { display: flex; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(5,20,40,.55); backdrop-filter: blur(4px); }
+.modal-panel {
+  position: relative; max-width: 620px; width: 100%; max-height: 85vh; overflow-y: auto;
+  padding: 2rem; border-radius: 16px;
+  background: rgba(240,247,255,.97); border: 1.5px solid var(--border);
+  z-index: 1;
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 30px; height: 30px; border: none; background: var(--bg-3);
+  border-radius: 50%; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; color: var(--text-sec);
+}
+.modal-body h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: .75rem; color: var(--text-primary); }
+.modal-body p { color: var(--text-sec); font-size: .9rem; margin-bottom: .75rem; }
+.modal-body ul { padding-left: 1.25rem; color: var(--text-sec); font-size: .875rem; }
+.modal-body ul li { margin-bottom: .35rem; }
+
+/* -------- CERTIFICATES -------- */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 1.25rem; }
+.cert-card {
+  padding: 1.25rem; border-radius: var(--radius);
+  background: var(--surface); border: 1.5px solid var(--border); box-shadow: var(--shadow);
+  cursor: pointer; transition: transform .2s, box-shadow .2s;
+}
+.cert-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.cert-icon { font-size: 2rem; margin-bottom: .5rem; display: block; }
+.cert-card h3 { font-size: .9rem; font-weight: 700; margin-bottom: .25rem; color: var(--text-primary); }
+.cert-card p { font-size: .8rem; color: var(--text-muted); }
+
+/* -------- EDUCATION -------- */
+.edu-timeline { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem; }
+.edu-card { padding: 1.5rem; }
+.edu-icon { font-size: 2rem; display: block; margin-bottom: .5rem; }
+.edu-year { font-size: .78rem; font-weight: 700; color: var(--accent); display: block; margin-bottom: .35rem; }
+.edu-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; color: var(--text-primary); }
+.edu-card p { font-size: .875rem; color: var(--text-sec); margin-bottom: .75rem; }
+.edu-achievements { padding-left: 1.1rem; }
+.edu-achievements li { font-size: .82rem; color: var(--text-muted); margin-bottom: .3rem; }
+
+/* -------- TESTIMONIALS -------- */
+.testi-track { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.25rem; }
+.testi-card { padding: 1.5rem; }
+.testi-card p { font-size: .9rem; color: var(--text-sec); margin-bottom: 1rem; font-style: italic; }
+.testi-author strong { font-size: .9rem; color: var(--text-primary); }
+.testi-author span { display: block; font-size: .78rem; color: var(--text-muted); }
+
+/* -------- CONTACT -------- */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+.contact-card {
+  padding: 1.5rem; text-align: center; text-decoration: none;
+  color: var(--text-primary); border-radius: var(--radius);
+  background: var(--surface); border: 1.5px solid var(--border); box-shadow: var(--shadow);
+  transition: transform .2s, box-shadow .2s; display: block;
+}
+.contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.contact-icon { font-size: 2rem; display: block; margin-bottom: .5rem; }
+.contact-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; }
+.contact-card p { font-size: .82rem; color: var(--text-sec); margin-bottom: .75rem; }
+.copy-btn {
+  padding: .3rem .8rem; border-radius: 6px; font-size: .75rem; font-weight: 600;
+  background: var(--bg-3); border: 1px solid var(--border); cursor: pointer; color: var(--accent);
+}
+.contact-meta { text-align: center; font-size: .82rem; color: var(--text-muted); display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+
+/* -------- FOOTER -------- */
+.site-footer { background: var(--text-primary); color: rgba(255,255,255,.7); padding: 2.5rem 0 1rem; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem; }
+.footer-brand { display: flex; align-items: center; gap: .75rem; }
+.footer-brand .logo-mark { font-size: .8rem; }
+.footer-brand p { font-size: .82rem; }
+.footer-social { display: flex; gap: 1.25rem; }
+.footer-social a { color: rgba(255,255,255,.6); text-decoration: none; font-size: .82rem; transition: color .2s; }
+.footer-social a:hover { color: #fff; }
+.footer-copy { text-align: center; font-size: .78rem; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.1); }
+.back-to-top {
+  background: var(--accent); color: #fff; border: none; width: 36px; height: 36px;
+  border-radius: 50%; cursor: pointer; font-size: 1rem; transition: background .2s;
+}
+.back-to-top:hover { background: var(--accent-2); }
+
+/* -------- REVEAL ANIMATIONS -------- */
+.reveal-up { opacity: 0; transform: translateY(28px); transition: opacity .6s, transform .6s; }
+.reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity .6s, transform .6s; }
+.reveal-right { opacity: 0; transform: translateX(28px); transition: opacity .6s, transform .6s; }
+.reveal-scale { opacity: 0; transform: scale(.92); transition: opacity .7s, transform .7s; }
+[data-delay="1"] { transition-delay: .1s; }
+[data-delay="2"] { transition-delay: .2s; }
+[data-delay="3"] { transition-delay: .3s; }
+[data-delay="4"] { transition-delay: .4s; }
+.in-view { opacity: 1 !important; transform: none !important; }
+
+/* -------- LIGHTBOX -------- */
+.lightbox { position: fixed; inset: 0; z-index: 9500; display: none; align-items: center; justify-content: center; background: rgba(5,20,40,.88); padding: 1rem; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90%; max-height: 85vh; border-radius: 10px; box-shadow: 0 8px 60px rgba(0,0,0,.4); }
+.lightbox .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(255,255,255,.15); color: #fff; font-size: 1.2rem; }
+
+/* -------- BLOG -------- */
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.5rem; }
+.blog-card { padding: 1.5rem; }
+.blog-tag { display: inline-block; padding: .2rem .6rem; border-radius: 4px; background: var(--bg-3); font-size: .72rem; font-weight: 700; color: var(--accent); margin-bottom: .75rem; }
+.blog-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; color: var(--text-primary); }
+.blog-card p { font-size: .85rem; color: var(--text-sec); margin-bottom: .75rem; }
+.blog-soon { font-size: .75rem; color: var(--text-muted); font-style: italic; }
+
+/* -------- MOBILE -------- */
+@media (max-width: 768px) {
+  .main-nav {
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: rgba(240,247,255,.97); backdrop-filter: blur(12px);
+    padding: 1.25rem; border-bottom: 1px solid var(--border);
+    display: none; z-index: 850;
+  }
+  .main-nav.open { display: block; }
+  .main-nav ul { flex-direction: column; gap: .25rem; }
+  .main-nav a { display: block; padding: .65rem .75rem; }
+  .nav-toggle { display: flex; }
+  .logo-text { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+  .hero-portrait { display: flex; justify-content: center; }
+  .portrait-frame { width: 190px; height: 230px; }
+  .portrait-badge { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image-frame img { height: 240px; }
+  .about-values { grid-template-columns: 1fr; }
+  .header-actions .btn-sm { display: none; }
+  .lang-switch { gap: .2rem; }
+  .exp-photo-row { grid-template-columns: repeat(2,1fr); }
+  .section { padding: 3rem 0; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-name { font-size: 2.2rem; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .exp-photo-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-mark">RT</span>
+    <div class="loader-bar"><span id="loaderProgress"></span></div>
+    <span class="loader-pct" id="loaderPct">0%</span>
+  </div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-mark">RT</span>
+      <span class="logo-text">Turganbayev</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">Мен туралы</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Дағдылар</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Тәжірибе</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Жобалар</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Байланыс</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn active" data-lang="kk">KZ</button>
+      </div>
+      <a href="assets/cv/Ramazan_Turganbayev_CV.pdf" class="btn-sm" download data-i18n="nav.cv">Түйіндеме</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow reveal-up"><span class="eyebrow-dot"></span> Шымкент, Қазақстан</p>
+      <h1 class="hero-name reveal-up" data-delay="1">
+        <span class="hero-name-line">Рамазан</span>
+        <span class="hero-name-line hero-name-accent">Тургaнбаев</span>
+      </h1>
+      <p class="hero-role reveal-up" data-delay="2">
+        <span id="typedRole" class="typed-role"></span><span class="type-caret">|</span>
+      </p>
+      <p class="hero-desc reveal-up" data-delay="3" data-i18n="hero.desc">
+        Заманауи білім беру, бағдарламалық жасақтама, жасанды интеллект және білім беру технологияларына маманданған информатика мұғалімі. GPA:3.35
+      </p>
+      <div class="hero-actions reveal-up" data-delay="4">
+        <a href="assets/cv/Ramazan_Turganbayev_CV.pdf" class="btn-primary" download data-i18n="hero.cv">Түйіндемені жүктеу</a>
+        <a href="#projects" class="btn-outline" data-i18n="hero.portfolio">Жобаларды көру</a>
+        <a href="#contact" class="btn-text" data-i18n="hero.contact">Хабарласу →</a>
+      </div>
+    </div>
+    <div class="hero-portrait reveal-scale" data-delay="2">
+      <div class="portrait-frame">
+        <img src="assets/profile/portrait.jpg" alt="Раmaзан Тургaнбаев суреті">
+      </div>
+      
+      
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">01 — <span data-i18n="about.eyebrow">Мен туралы</span></p>
+      <h2 class="section-title" data-i18n="about.title">Оқытатын әзірлеуші.<br>Жасайтын мұғалім.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <div class="about-image-frame">
+          <img src="assets/profile/portrait.jpg" alt="Рамазан Тургaнбаев жұмыста">
+        </div>
+      </div>
+      <div class="about-copy reveal-right">
+        <p class="about-lede">Мен екі өнерді қатар ұштастырамын: адамдарға компьютер логикасын оқытамын және білімді жылдамдататын бағдарламалар жасаймын.</p>
+        <p>Бірнеше жыл бойы Түркістан қаласында информатика пәнін оқып жүрмін — алгоритм, логика және деректер құрылымы сияқты абстрактілі тұжырымдамаларды оқушылар нақты бағалайтын сабақтарға айналдырдым. Сыныптан тысқары уақытта өндірістік код жазамын: веб-қосымшалар, AI-қолдаулы құралдар және Arduino негізіндегі роботтық жүйелер.</p>
+        <div class="about-values">
+          <div class="value-card glass reveal-up" data-delay="1">
+            <span class="value-icon">◆</span>
+            <h3 data-i18n="about.mission.title">Миссия</h3>
+            <p data-i18n="about.mission.text">Технологияны сыныпта да, жасалатын өнімдерде де шынымен түсінікті ету.</p>
+          </div>
+          <div class="value-card glass reveal-up" data-delay="2">
+            <span class="value-icon">◇</span>
+            <h3 data-i18n="about.vision.title">Көзқарас</h3>
+            <p data-i18n="about.vision.text">AI мен бағдарламалық жасақтаманы жұмбақ емес, өзі қолдана алатын құрал ретінде қабылдайтын ұрпақ.</p>
+          </div>
+          <div class="value-card glass reveal-up" data-delay="3">
+            <span class="value-icon">◈</span>
+            <h3 data-i18n="about.values.title">Құндылықтар</h3>
+            <p data-i18n="about.values.text">Спорттан тәртіп, инженериядан дәлдік, сыныптан шыдамдылық.</p>
+          </div>
+        </div>
+        <div class="about-tags">
+          <span class="tag">Білім беру</span>
+          <span class="tag">AI & Автоматтандыру</span>
+          <span class="tag">Веб Әзірлеу</span>
+          <span class="tag">Роботтехника</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="section statistics" id="statistics">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card glass reveal-up" data-delay="1"><span class="stat-num" data-count="15">0</span><span class="stat-suffix">+</span><p data-i18n="stats.projects">Аяқталған жобалар</p></div>
+      <div class="stat-card glass reveal-up" data-delay="2"><span class="stat-num" data-count="12">0</span><span class="stat-suffix">+</span><p data-i18n="stats.tech">Технологиялар</p></div>
+      <div class="stat-card glass reveal-up" data-delay="3"><span class="stat-num" data-count="3">0</span><p data-i18n="stats.exp">Практика жылдары</p></div>
+      <div class="stat-card glass reveal-up" data-delay="4"><span class="stat-num" data-count="300">0</span><span class="stat-suffix">+</span><p data-i18n="stats.students">Оқытылған оқушылар</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">02 — <span data-i18n="skills.eyebrow">Дағдылар</span></p>
+      <h2 class="section-title" data-i18n="skills.title">Күнделікті қолданатын құралдарым.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category glass reveal-up" data-delay="1">
+        <h3>Frontend</h3>
+        <div class="skill-row" data-level="92"><span>HTML</span><div class="skill-track"><div class="skill-fill"></div></div><em>92%</em></div>
+        <div class="skill-row" data-level="88"><span>CSS</span><div class="skill-track"><div class="skill-fill"></div></div><em>88%</em></div>
+        <div class="skill-row" data-level="85"><span>JavaScript</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+      </div>
+      <div class="skill-category glass reveal-up" data-delay="2">
+        <h3>Backend</h3>
+        <div class="skill-row" data-level="78"><span>PHP</span><div class="skill-track"><div class="skill-fill"></div></div><em>78%</em></div>
+        <div class="skill-row" data-level="80"><span>MySQL</span><div class="skill-track"><div class="skill-fill"></div></div><em>80%</em></div>
+      </div>
+      <div class="skill-category glass reveal-up" data-delay="3">
+        <h3>Бағдарламалау</h3>
+        <div class="skill-row" data-level="88"><span>Python</span><div class="skill-track"><div class="skill-fill"></div></div><em>88%</em></div>
+        <div class="skill-row" data-level="75"><span>Arduino</span><div class="skill-track"><div class="skill-fill"></div></div><em>75%</em></div>
+        <div class="skill-row" data-level="65"><span>C++</span><div class="skill-track"><div class="skill-fill"></div></div><em>65%</em></div>
+      </div>
+      <div class="skill-category glass reveal-up" data-delay="4">
+        <h3>AI Құралдар</h3>
+        <div class="skill-row" data-level="90"><span>ChatGPT</span><div class="skill-track"><div class="skill-fill"></div></div><em>90%</em></div>
+        <div class="skill-row" data-level="90"><span>Claude</span><div class="skill-track"><div class="skill-fill"></div></div><em>90%</em></div>
+        <div class="skill-row" data-level="85"><span>Cursor AI</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+      </div>
+      <div class="skill-category glass reveal-up" data-delay="5">
+        <h3>Дизайн</h3>
+        <div class="skill-row" data-level="72"><span>Photoshop</span><div class="skill-track"><div class="skill-fill"></div></div><em>72%</em></div>
+        <div class="skill-row" data-level="80"><span>Figma</span><div class="skill-track"><div class="skill-fill"></div></div><em>80%</em></div>
+      </div>
+      <div class="skill-category glass reveal-up" data-delay="6">
+        <h3>Инструменттер</h3>
+        <div class="skill-row" data-level="85"><span>Git</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+        <div class="skill-row" data-level="85"><span>GitHub</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+        <div class="skill-row" data-level="90"><span>VS Code</span><div class="skill-track"><div class="skill-fill"></div></div><em>90%</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">03 — <span data-i18n="exp.eyebrow">Тәжірибе</span></p>
+      <h2 class="section-title" data-i18n="exp.title">Практика жылдары.</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2024</span>
+          <h3>Педагогикалық практика</h3>
+          <p class="timeline-org">Майша Әбенова атындағы жалпы орта мектеп, Түркістан қаласы</p>
+          <p class="timeline-desc">Информатика пәнінен алгоритмдер, бағдарламалаудың негіздері және цифрлық сауаттылық бойынша сабақтар жүргіздім. Жобаға негізделген, практикалық тәсілмен оқыту бойынша тәжірибе алдым.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2025</span>
+          <h3>Педагогикалық практика</h3>
+          <p class="timeline-org">Нұртас Оңдасынов атындағы Түркістан мамандандырылған Дарын мектеп-интернаты</p>
+          <p class="timeline-desc">Дарынды балаларға арналған мамандандырылған мектепте информатика пәнінен сабақ бердім. Олимпиадалық есептерді шешу және бағдарламалау жарыстарына дайындықты жүзеге асырдым.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2026</span>
+          <h3>Педагогикалық практика</h3>
+          <p class="timeline-org">Ж.Тәшенов атындағы №23 IT-мектеп-лицей, Түркістан қаласы</p>
+          <p class="timeline-desc">IT-бейімді мектеп-лицейде информатика, бағдарламалау және ақпараттық технологиялар пәндерін оқыттым. «Зерде» интеллектуалды сайысын ұйымдастыруға қатыстым.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Photos -->
+    <div class="exp-photos reveal-up">
+      <p class="exp-photos-title">Практикадан суреттер</p>
+
+      <div class="exp-photos-group">
+        <h4>2024 — Майша Әбенова атындағы мектеп</h4>
+        <p>Информатика компьютерлік сыныбында практика кезінде</p>
+        <div class="exp-photo-row">
+          <div class="exp-photo-item" onclick="openLightbox('assets/images/exp3.jpg')">
+            <img src="assets/images/exp3.jpg" alt="Компьютерлік сыныпта практика 2024">
+          </div>
+          <div class="exp-photo-item" onclick="openLightbox('assets/images/exp4.jpg')">
+            <img src="assets/images/exp4.jpg" alt="Оқушылармен практика 2024">
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-photos-group">
+        <h4>2025 — Дарын мектеп-интернаты</h4>
+        <p>«Зерде» интеллектуалды сайысы және сынып сабақтары</p>
+        <div class="exp-photo-row">
+          <div class="exp-photo-item" onclick="openLightbox('assets/images/exp1.jpg')">
+            <img src="assets/images/exp1.jpg" alt="Зерде сайысы 2025">
+          </div>
+          <div class="exp-photo-item" onclick="openLightbox('assets/images/exp5.jpg')">
+            <img src="assets/images/exp5.jpg" alt="Медальдар 2025">
+          </div>
+          <div class="exp-photo-item" onclick="openLightbox('assets/images/exp6.jpg')">
+            <img src="assets/images/exp6.jpg" alt="Компьютерлік сынып 2025">
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-photos-group">
+        <h4>2026 — №23 IT-мектеп-лицей</h4>
+        <p>Информатика пәнінен сабақтар және оқушылармен жұмыс</p>
+        <div class="exp-photo-row">
+          <div class="exp-photo-item" onclick="openLightbox('assets/images/exp2.jpg')">
+            <img src="assets/images/exp2.jpg" alt="IT мектепте практика 2026">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section education" id="education">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">04 — <span data-i18n="edu.eyebrow">Білім</span></p>
+      <h2 class="section-title" data-i18n="edu.title">Білімнің іргетасы.</h2>
+    </div>
+    <div class="edu-timeline">
+      <div class="edu-card glass reveal-up" data-delay="1">
+        <span class="edu-icon">🎓</span>
+        <span class="edu-year">2022 — 2026</span>
+        <h3>Бакалавриат — Информатика,АКТ және робототехника мамандығы</h3>
+        <p>Қожа Ахмет Ясауи атындағы Халықаралық қазақ-түрік университеті. Информатика оқыту әдістемесіне маманданып, бағдарламалау мен жүйелік пәндерді меңгердім.</p>
+        <ul class="edu-achievements">
+          <li>Педагогикалық практиканы үздік бітіру</li>
+          <li>Бағдарламалаудың негіздерін ойын арқылы үйретуге арналған дипломдық жұмыс</li>
+        </ul>
+      </div>
+      <div class="edu-card glass reveal-up" data-delay="2">
+        <span class="edu-icon">📘</span>
+        <span class="edu-year">2026 — Қазіргі уақыт</span>
+        <h3>Кәсіби даму</h3>
+        <p>AI жүйелері, заманауи веб-әзірлеу және білім беру технологиялары бойынша өздігінен оқуды жалғастырудамын.</p>
+        <ul class="edu-achievements">
+          <li>Веб-әзірлеу мен AI құралдары бойынша сертификаттар</li>
+          <li>Ашық оқу ресурстарына үлес қосу</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">05 — <span data-i18n="proj.eyebrow">Жобалар</span></p>
+      <h2 class="section-title" data-i18n="proj.title">Таңдаулы жұмыстар.</h2>
+    </div>
+    <div class="project-filters reveal-up" id="projectFilters">
+      <button class="filter-btn active" data-filter="all">Барлығы</button>
+      <button class="filter-btn" data-filter="web">Веб</button>
+      <button class="filter-btn" data-filter="ai">AI Құралдар</button>
+      <button class="filter-btn" data-filter="education">Білім беру</button>
+      <button class="filter-btn" data-filter="robotics">Роботтехника</button>
+    </div>
+    <div class="projects-grid reveal-up" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- Project Modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-backdrop" onclick="closeModal('projectModal')"></div>
+  <div class="modal-panel" role="dialog">
+    <button class="modal-close" onclick="closeModal('projectModal')">✕</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Photo Lightbox -->
+<div class="lightbox" id="photoLightbox">
+  <div class="modal-backdrop" onclick="closeLightbox()"></div>
+  <button class="modal-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- CERTIFICATES -->
+<section class="section certificates" id="certificates">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">06 — <span data-i18n="cert.eyebrow">Сертификаттар</span></p>
+      <h2 class="section-title" data-i18n="cert.title">Мойындалған оқу.</h2>
+    </div>
+    <div class="cert-grid reveal-up" id="certGrid"></div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="section blog" id="blog">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">08 — <span data-i18n="blog.eyebrow">Блог</span></p>
+      <h2 class="section-title" data-i18n="blog.title">Оқыту мен жасау туралы жазбалар.</h2>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card glass reveal-up" data-delay="1">
+        <span class="blog-tag">Білім беру</span>
+        <h3>Тақтасыз алгоритм үйрету</h3>
+        <p>Сұрыптау мен іздеуді бір жол код жазылмай тұрып үйрету үшін күнделікті сынып заттарын қалай қолданамын.</p>
+        <span class="blog-soon">Жақында</span>
+      </article>
+      <article class="blog-card glass reveal-up" data-delay="2">
+        <span class="blog-tag">AI</span>
+        <h3>AI Құралдары оқушыларға шынымен қалай көмектеседі</h3>
+        <p>Қандай AI жұмыс процестері оқушыларға ойлауға көмектеседі және қайсысы ойлауды айналып өтуге мүмкіндік береді — практикалық шолу.</p>
+        <span class="blog-soon">Жақында</span>
+      </article>
+      <article class="blog-card glass reveal-up" data-delay="3">
+        <span class="blog-tag">Әзірлеу</span>
+        <h3>Жалғыз мұғалім-әзірлеуші ретінде LMS жасау</h3>
+        <p>EasyChemLearn жіберуден сабақтар — ауқым, нақты пайдаланушылар ретінде студенттер және басқаша жасар едім дегендер.</p>
+        <span class="blog-soon">Жақында</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-head reveal-up center">
+      <p class="section-eyebrow">09 — <span data-i18n="contact.eyebrow">Байланыс</span></p>
+      <h2 class="section-title" data-i18n="contact.title">Бірге жасайық.</h2>
+      <p class="section-sub center" data-i18n="contact.sub">Оқыту ынтымақтастығына, фриланс жобаларына және жалпы қызықты мәселелерге ашықпын.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card reveal-up" data-delay="1" href="tel:+77716946552">
+        <span class="contact-icon">📞</span>
+        <h3>Телефон</h3>
+        <p>+7 771 694 6552</p>
+        <button type="button" class="copy-btn" data-copy="+7 771 694 6552" onclick="event.preventDefault()">Көшіру</button>
+      </a>
+      <a class="contact-card reveal-up" data-delay="2" href="mailto:turganbaevramazan4@gmail.com">
+        <span class="contact-icon">✉️</span>
+        <h3>Email</h3>
+        <p>turganbaevramazan4@gmail.com</p>
+        <button type="button" class="copy-btn" data-copy="turganbaevramazan4@gmail.com" onclick="event.preventDefault()">Көшіру</button>
+      </a>
+      <a class="contact-card reveal-up" data-delay="3" href="https://wa.me/77716946552" target="_blank" rel="noopener">
+        <span class="contact-icon">💬</span>
+        <h3>WhatsApp</h3>
+        <p>Тікелей хабарлама</p>
+        <span class="copy-btn">Ашу</span>
+      </a>
+      <a class="contact-card reveal-up" data-delay="4" href="https://www.instagram.com/t.ramazan_707" target="_blank" rel="noopener">
+        <span class="contact-icon">📷</span>
+        <h3>Instagram</h3>
+        <p>@t.ramazan_707</p>
+        <span class="copy-btn">Ашу</span>
+      </a>
+    </div>
+    <div class="contact-meta reveal-up">
+      <span>🕒 <span id="localTime">--:--</span> жергілікті уақыт</span>
+      <span>📍 Шымкент, Қазақстан</span>
+      <span>🗣️ Қазақша · Орысша · Ағылшынша</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">RT</span>
+      <p>Рамазан Тургaнбаев — Информатика Мұғалімі, Веб Əзірлеуші, AI Маманы.</p>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/t.ramazan_707" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/77716946552" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:turganbaevramazan4@gmail.com">Email</a>
+    </div>
+    <button class="back-to-top" id="backToTop" aria-label="Жоғарыға">↑</button>
+  </div>
+  <p class="footer-copy">© 2026 Рамазан Тургaнбаев. Барлық құқықтар қорғалған.</p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* LOADER */
+function initLoader(){
+  const loader = document.getElementById('loader');
+  const bar = document.getElementById('loaderProgress');
+  const pct = document.getElementById('loaderPct');
+  let p = 0;
+  document.body.style.overflow = 'hidden';
+  const t = setInterval(()=>{
+    p += Math.random()*18;
+    if(p >= 100){ p = 100; clearInterval(t); }
+    bar.style.width = p + '%';
+    pct.textContent = Math.floor(p) + '%';
+    if(p === 100) setTimeout(()=>{ loader.classList.add('hide'); document.body.style.overflow=''; }, 300);
+  }, 120);
+}
+
+/* SCROLL */
+function initScroll(){
+  const bar = document.getElementById('scrollProgress');
+  const hdr = document.getElementById('siteHeader');
+  document.addEventListener('scroll', ()=>{
+    const h = document.documentElement;
+    const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    if(bar) bar.style.width = pct + '%';
+    if(hdr) hdr.classList.toggle('scrolled', h.scrollTop > 40);
+  }, { passive:true });
+}
+
+/* MOBILE NAV */
+function initNav(){
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('mainNav');
+  if(!toggle) return;
+  toggle.addEventListener('click', ()=>{
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=>{
+    nav.classList.remove('open'); toggle.setAttribute('aria-expanded', false);
+  }));
+}
+
+/* TYPING */
+function initTyping(){
+  const el = document.getElementById('typedRole');
+  if(!el) return;
+  const roles = ['Информатика Мұғалімі', 'Веб Əзірлеуші', 'AI Маманы'];
+  let ri=0, ci=0, del=false;
+  function step(){
+    const word = roles[ri];
+    if(!del){ ci++; el.textContent = word.slice(0,ci); if(ci===word.length){ del=true; setTimeout(step,1600); return; } }
+    else { ci--; el.textContent = word.slice(0,ci); if(ci===0){ del=false; ri=(ri+1)%roles.length; } }
+    setTimeout(step, del?40:90);
+  }
+  step();
+}
+
+/* REVEAL */
+function initReveal(){
+  const els = document.querySelectorAll('.reveal-up,.reveal-left,.reveal-right,.reveal-scale');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target); } });
+  }, { threshold:0.12 });
+  els.forEach(el=> io.observe(el));
+}
+
+/* SKILL BARS */
+function initSkillBars(){
+  const rows = document.querySelectorAll('.skill-row');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.querySelector('.skill-fill').style.width = en.target.dataset.level+'%'; io.unobserve(en.target); } });
+  }, { threshold:0.4 });
+  rows.forEach(r=> io.observe(r));
+}
+
+/* COUNTERS */
+function initCounters(){
+  const nums = document.querySelectorAll('.stat-num');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){
+      const el = en.target, target = parseInt(el.dataset.count,10), start = performance.now();
+      (function frame(now){ const t=Math.min(1,(now-start)/1400); el.textContent=Math.floor((1-Math.pow(1-t,3))*target); if(t<1) requestAnimationFrame(frame); else el.textContent=target; })(start);
+      io.unobserve(el);
+    }});
+  }, { threshold:0.5 });
+  nums.forEach(n=> io.observe(n));
+}
+
+/* PROJECTS */
+const PROJECTS = [
+  { id:1, tag:'education', label:'Білім беру', title:'EasyChemLearn LMS', desc:'Химия оқушыларына арналған сабақтар, тесттер және прогресті бақылау жүйесі бар оқу басқару жүйесі.', stack:['PHP','MySQL','JavaScript','CSS'], features:['Интерактивті сабақ жасаушы','Автоматты тестілеу','Оқушы прогресінің бақылауы','Мұғалім контент редакторы'], challenge:'Химия мұғалімдерінің техникалық көмексіз интерактивті сабақтар жариялауға жай жолы болмады.', solution:'Мұғалімдерге мазмұнды басқаруға, тесттер жариялауға және нәтижелерді бақылауға мүмкіндік беретін жеңіл PHP/MySQL жүйесін жасадым.', results:'Екі сынып бөліміне пайдаланылды; сабаққа дайындалу уақытын айтарлықтай қысқартты.' },
+  { id:2, tag:'web', label:'Веб', title:'Мерекелік іс-шара сайты', desc:'RSVP формасы, кері санақ және іс-шара мәліметтері бар элегантты, анимациялы цифрлық шақыру.', stack:['HTML','CSS','JavaScript'], features:['Анимациялы шақыру дизайны','RSVP формасы','Кері санақ таймері','Мобильді алдымен'], challenge:'Клиент қағаздық шақыру сезімін жылдам, мобильді-алдымен веб тәжірибесіне аударғысы келді.' },
+  { id:3, tag:'ai', label:'AI Құрал', title:'AI Түйіндеме Жасаушы', desc:'AI ұсыныстарын пайдаланып тұжырымдаманы жетілдіретін және пішімдейтін бағыттаушы түйіндеме жасаушы.', stack:['Python','OpenAI API','JavaScript'], features:['AI-қолдаулы қайта жазу ұсыныстары','Нақты уақыт алдын ала қарауы','PDF/Word экспорты'], challenge:'Студенттерге түйіндеме жазуда көмек керек болды, бірақ мансап кеңес беру құралдарына қол жеткізу мүмкіндігі болмады.' },
+  { id:4, tag:'robotics', label:'Роботтехника', title:'Ақылды сақшы робот (Smart Guard Robot)', desc:'Қоршаған ортаны бақылайтын және қауіпті жағдайда автоматты түрде ескерту беретін Arduino негізіндегі интеллектуалды роботтық қауіпсіздік жүйесі.', stack:['Arduino','C++','VL53L0X ToF','Relay Module','LED','Buzzer'], features:['Қоршаған ортаны үздіксіз бақылау','Кедергілер мен объектілерді анықтау','Дыбыстық және жарықтық ескерту', 'Желдеткіш пен басқа құрылғыларды автоматты басқару','Arduino арқылы бағдарламаланатын интеллектуалды басқару'], challenge:'Сенсорлар, логика және аппараттық басқаруды бірге үйретудің практикалық тәсілі қажет болды.', solution:'VL53L0X қашықтық сенсоры, желдеткіштер, реле, жарықдиодтар және дыбыстық ескерту модульдері арқылы жұмыс істейтін, кедергілерді анықтайтын жүйе жасадым.', results:'Электроника, микроконтроллерлерді бағдарламалау және автоматтандырылған қауіпсіздік жүйелерін құрастыру бойынша практикалық дағдыларды дамыттым.' },
+  { id:5, tag:'web', label:'Веб', title:'Мектеп веб-сайты', desc:'Жаңалықтар, оқушы порталы және мұғалім каталогы бар толық мектеп ақпараттық жүйесі.', stack:['HTML','CSS','PHP','MySQL'] },
+  { id:6, tag:'education', label:'Білім беру', title:'Студенттерді Басқару Жүйесі', desc:'Оқушы тіркеуін, үлгерімін және қатысуын бақылайтын мұғалімдерге арналған жеке бақылау тақтасы.', stack:['Python','SQLite','HTML','CSS'] },
+];
+
+function renderProjects(filter='all'){
+  const grid = document.getElementById('projectsGrid');
+  const filtered = filter==='all' ? PROJECTS : PROJECTS.filter(p=>p.tag===filter);
+  grid.innerHTML = filtered.map(p=>`
+    <div class="project-card" onclick="openProject(${p.id})">
+      <span class="project-tag">${p.label}</span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="project-stack">${p.stack.map(s=>`<span>${s}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+window.openProject = function(id){
+  const p = PROJECTS.find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('modalBody').innerHTML = `
+    <h2>${p.title}</h2>
+    <span class="project-tag">${p.label}</span>
+    <p style="margin-top:.75rem">${p.desc}</p>
+    ${p.features ? `<h4 style="margin:.75rem 0 .4rem;font-size:.85rem;color:var(--accent)">Мүмкіндіктер</h4><ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>` : ''}
+    ${p.challenge ? `<h4 style="margin:.75rem 0 .4rem;font-size:.85rem;color:var(--accent)">Мақсат</h4><p>${p.challenge}</p>` : ''}
+    ${p.solution ? `<h4 style="margin:.75rem 0 .4rem;font-size:.85rem;color:var(--accent)">Шешім</h4><p>${p.solution}</p>` : ''}
+    ${p.results ? `<h4 style="margin:.75rem 0 .4rem;font-size:.85rem;color:var(--accent)">Нәтиже</h4><p>${p.results}</p>` : ''}
+    <div class="project-stack" style="margin-top:1rem">${p.stack.map(s=>`<span>${s}</span>`).join('')}</div>`;
+  document.getElementById('projectModal').classList.add('open');
+};
+
+function initProjectFilters(){
+  document.querySelectorAll('[data-filter]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.filter);
+    });
+  });
+}
+
+window.closeModal = function(id){ document.getElementById(id).classList.remove('open'); };
+
+/* LIGHTBOX */
+window.openLightbox = function(src){
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('photoLightbox').classList.add('open');
+};
+window.closeLightbox = function(){ document.getElementById('photoLightbox').classList.remove('open'); };
+
+/* CERTIFICATES */
+const CERTS = [
+  { icon:'🏆', title:'Веб-әзірлеу сертификаты', org:'Online Platform, 2023' },
+  { icon:'🤖', title:'AI Негіздері', org:'Google, 2024' },
+  { icon:'🐍', title:'Python Бағдарламалауы', org:'Coursera, 2023' },
+  { icon:'📱', title:'Адаптивті Дизайн', org:'freeCodeCamp, 2022' },
+  { icon:'🔧', title:'Arduino & Микроконтроллерлер', org:'Workshops, 2021' },
+  { icon:'📊', title:'Деректер Талдауы', org:'Kaggle, 2024' },
+];
+function renderCerts(){
+  document.getElementById('certGrid').innerHTML = CERTS.map(c=>`
+    <div class="cert-card"><span class="cert-icon">${c.icon}</span><h3>${c.title}</h3><p>${c.org}</p></div>`).join('');
+}
+
+/* LANG */
+const I18N = {
+  en: {
+    'nav.about':'About','nav.skills':'Skills','nav.experience':'Experience','nav.projects':'Projects','nav.contact':'Contact','nav.cv':'Download CV',
+    'hero.cv':'Download CV','hero.portfolio':'View Portfolio','hero.contact':'Contact Me →',
+    'hero.desc':'Passionate Informatics Teacher specializing in modern education, software engineering, artificial intelligence, web development and educational technologies.',
+    'about.eyebrow':'About','about.title':'The teacher who codes.<br>The developer who teaches.',
+    'about.mission.title':'Mission','about.mission.text':'Make technology genuinely understandable — in the classroom and in the products I build.',
+    'about.vision.title':'Vision','about.vision.text':'A generation who see AI as a tool they can shape.',
+    'about.values.title':'Values','about.values.text':'Discipline from sport, precision from engineering, patience from teaching.',
+    'stats.projects':'Projects Completed','stats.tech':'Technologies Used','stats.exp':'Practice Years','stats.students':'Students Taught',
+    'skills.eyebrow':'Skills','skills.title':'Tools I reach for daily.',
+    'exp.eyebrow':'Experience','exp.title':'Practice years.',
+    'edu.eyebrow':'Education','edu.title':'Foundations.',
+    'proj.eyebrow':'Projects','proj.title':'Selected work.',
+    'cert.eyebrow':'Certificates','cert.title':'Recognised learning.',
+    'test.eyebrow':'Testimonials','test.title':'What people say.',
+    'blog.eyebrow':'Blog','blog.title':'Notes on teaching & building.',
+    'contact.eyebrow':'Contact','contact.title':"Let's build something.",'contact.sub':'Open to teaching collaborations, freelance web projects, and interesting problems.'
+  },
+  ru: {
+    'nav.about':'Обо мне','nav.skills':'Навыки','nav.experience':'Опыт','nav.projects':'Проекты','nav.contact':'Контакты','nav.cv':'Скачать резюме',
+    'hero.cv':'Скачать резюме','hero.portfolio':'Смотреть портфолио','hero.contact':'Связаться →',
+    'hero.desc':'Увлечённый учитель информатики, специализирующийся на современном образовании, разработке ПО, искусственном интеллекте и образовательных технологиях.',
+    'about.eyebrow':'Обо мне','about.title':'Учитель, который кодит.<br>Разработчик, который учит.',
+    'about.mission.title':'Миссия','about.mission.text':'Сделать технологии действительно понятными — в классе и в продуктах, которые я создаю.',
+    'about.vision.title':'Видение','about.vision.text':'Поколение, которое видит ИИ как инструмент, которым они могут управлять.',
+    'about.values.title':'Ценности','about.values.text':'Дисциплина из спорта, точность из инженерии, терпение из обучения.',
+    'stats.projects':'Завершённых проектов','stats.tech':'Технологий использовано','stats.exp':'Лет практики','stats.students':'Обученных учеников',
+    'skills.eyebrow':'Навыки','skills.title':'Инструменты, которыми пользуюсь ежедневно.',
+    'exp.eyebrow':'Опыт','exp.title':'Годы практики.',
+    'edu.eyebrow':'Образование','edu.title':'Основы.',
+    'proj.eyebrow':'Проекты','proj.title':'Избранные работы.',
+    'cert.eyebrow':'Сертификаты','cert.title':'Признанное обучение.',
+    'test.eyebrow':'Отзывы','test.title':'Что говорят люди.',
+    'blog.eyebrow':'Блог','blog.title':'Заметки об обучении и разработке.',
+    'contact.eyebrow':'Контакты','contact.title':'Создадим вместе.','contact.sub':'Открыт к сотрудничеству в обучении, фриланс-проектам и интересным задачам.'
+  },
+  kk: {
+    'nav.about':'Мен туралы','nav.skills':'Дағдылар','nav.experience':'Тәжірибе','nav.projects':'Жобалар','nav.contact':'Байланыс','nav.cv':'Түйіндемені жүктеу',
+    'hero.cv':'Түйіндемені жүктеу','hero.portfolio':'Жобаларды көру','hero.contact':'Хабарласу →',
+    'hero.desc':'Заманауи білім беру, бағдарламалық жасақтама, жасанды интеллект және білім беру технологияларына маманданған информатика мұғалімі.',
+    'about.eyebrow':'Мен туралы','about.title':'Оқытатын әзірлеуші.<br>Жасайтын мұғалім.',
+    'about.mission.title':'Миссия','about.mission.text':'Технологияны сыныпта да, жасалатын өнімдерде де шынымен түсінікті ету.',
+    'about.vision.title':'Көзқарас','about.vision.text':'AI-ды өзі қолдана алатын құрал ретінде қабылдайтын ұрпақ.',
+    'about.values.title':'Құндылықтар','about.values.text':'Спорттан тәртіп, инженериядан дәлдік, сыныптан шыдамдылық.',
+    'stats.projects':'Аяқталған жобалар','stats.tech':'Технологиялар','stats.exp':'Практика жылдары','stats.students':'Оқытылған оқушылар',
+    'skills.eyebrow':'Дағдылар','skills.title':'Күнделікті қолданатын құралдарым.',
+    'exp.eyebrow':'Тәжірибе','exp.title':'Практика жылдары.',
+    'edu.eyebrow':'Білім','edu.title':'Білімнің іргетасы.',
+    'proj.eyebrow':'Жобалар','proj.title':'Таңдаулы жұмыстар.',
+    'cert.eyebrow':'Сертификаттар','cert.title':'Мойындалған оқу.',
+    'test.eyebrow':'Пікірлер','test.title':'Айтылғандар.',
+    'blog.eyebrow':'Блог','blog.title':'Оқыту мен жасау туралы жазбалар.',
+    'contact.eyebrow':'Байланыс','contact.title':'Бірге жасайық.','contact.sub':'Оқыту ынтымақтастығына, фриланс жобаларына және жалпы қызықты мәселелерге ашықпын.'
+  }
+};
+
+function applyLang(lang){
+  const dict = I18N[lang] || I18N.kk;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.dataset.i18n;
+    if(dict[key]) el.innerHTML = dict[key];
+  });
+  document.documentElement.lang = lang;
+  // Update typing roles
+  if(lang==='kk') window._roles = ['Информатика Мұғалімі','Веб Əзірлеуші','AI Маманы'];
+  else if(lang==='ru') window._roles = ['Учитель информатики','Веб-разработчик','AI специалист'];
+  else window._roles = ['Informatics Teacher','Web Developer','AI Enthusiast'];
+}
+
+function initLang(){
+  const wrap = document.getElementById('langSwitch');
+  if(!wrap) return;
+  wrap.addEventListener('click', e=>{
+    const btn = e.target.closest('.lang-btn');
+    if(!btn) return;
+    wrap.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyLang(btn.dataset.lang);
+  });
+}
+
+/* LOCAL TIME */
+function initTime(){
+  const el = document.getElementById('localTime');
+  if(!el) return;
+  const tick = ()=> el.textContent = new Date().toLocaleTimeString('kk-KZ',{hour:'2-digit',minute:'2-digit'});
+  tick(); setInterval(tick, 30000);
+}
+
+/* COPY BUTTONS */
+function initCopy(){
+  document.querySelectorAll('.copy-btn[data-copy]').forEach(btn=>{
+    btn.addEventListener('click', e=>{ e.preventDefault(); navigator.clipboard.writeText(btn.dataset.copy).then(()=>{ const old=btn.textContent; btn.textContent='✓'; setTimeout(()=> btn.textContent=old, 1500); }); });
+  });
+}
+
+/* BACK TO TOP */
+function initBackToTop(){
+  const btn = document.getElementById('backToTop');
+  if(btn) btn.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+}
+
+/* INIT */
+document.addEventListener('DOMContentLoaded', ()=>{
+  initLoader();
+  initScroll();
+  initNav();
+  initTyping();
+  initReveal();
+  initSkillBars();
+  initCounters();
+  renderProjects();
+  initProjectFilters();
+  renderCerts();
+  initLang();
+  initTime();
+  initCopy();
+  initBackToTop();
+});
+
+})();
+</script>
+</body>
+</html>
