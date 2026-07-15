@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramazan Turganbayev — Informatics Teacher · Web Developer · AI Enthusiast</title>
+<meta name="description" content="Passionate Informatics Teacher specializing in modern education, software engineering, artificial intelligence, web development, and educational technologies. Portfolio of Ramazan Turganbayev, Turkistan, Kazakhstan.">
+<meta name="author" content="Ramazan Turganbayev">
+<meta name="keywords" content="Ramazan Turganbayev, Informatics Teacher, Web Developer, AI Enthusiast, Kazakhstan, Turkistan, Portfolio">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ramazan Turganbayev — Informatics Teacher · Web Developer · AI Enthusiast">
+<meta property="og:description" content="I create elegant digital experiences, AI-powered tools, educational systems, and automation solutions.">
+<meta property="og:image" content="assets/profile/og-image.jpg">
+<meta property="og:url" content="https://ramazanturganbayev.com">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ramazan Turganbayev — Portfolio">
+<meta name="twitter:description" content="Informatics Teacher · Web Developer · AI Enthusiast">
+<meta name="twitter:image" content="assets/profile/og-image.jpg">
+
+<link rel="canonical" href="https://ramazanturganbayev.com">
+<link rel="icon" href="favicon.ico">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080808">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ramazan Turganbayev",
+  "jobTitle": ["Informatics Teacher", "Web Developer"],
+  "email": "mailto:turganbaevramazan4@gmail.com",
+  "telephone": "+7 771 694 6552",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Turkistan",
+    "addressCountry": "Kazakhstan"
+  },
+  "sameAs": [
+    "https://www.instagram.com/t.ramazan_707",
+    "https://wa.me/77716946552"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-mark">RT</span>
+    <div class="loader-bar"><span id="loaderProgress"></span></div>
+    <span class="loader-pct" id="loaderPct">0%</span>
+  </div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#hero" class="logo" aria-label="Ramazan Turganbayev — home">
+      <span class="logo-mark">RT</span>
+      <span class="logo-text">Turganbayev</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <ul>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#sports" data-i18n="nav.sports">Sports</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" id="langSwitch" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="kk">KZ</button>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="false" aria-label="Toggle ambient sound">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 9v6h4l5 5V4L8 9H4z"/></svg>
+      </button>
+      <a href="assets/cv/Ramazan_Turganbayev_CV.pdf" class="btn btn-ghost btn-sm" download data-i18n="nav.cv">Download CV</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
+  <div class="hero-aurora" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
+
+  <div class="hero-inner container">
+    <div class="hero-copy">
+      <p class="eyebrow reveal-up"><span class="eyebrow-dot"></span> Turkistan, Kazakhstan</p>
+      <h1 class="hero-name reveal-up" data-delay="1">
+        <span class="hero-name-line">Ramazan</span>
+        <span class="hero-name-line hero-name-accent">Turganbayev</span>
+      </h1>
+      <p class="hero-role reveal-up" data-delay="2">
+        <span id="typedRole" class="typed-role"></span><span class="type-caret">|</span>
+      </p>
+      <p class="hero-desc reveal-up" data-delay="3" data-i18n="hero.desc">
+        Passionate Informatics Teacher specializing in modern education, software engineering,
+        artificial intelligence, web development and educational technologies. I build elegant
+        digital experiences, AI‑powered tools and automation for the classroom and beyond.
+      </p>
+      <div class="hero-actions reveal-up" data-delay="4">
+        <a href="assets/cv/Ramazan_Turganbayev_CV.pdf" class="btn btn-primary magnetic" download>
+          <span data-i18n="hero.cv">Download CV</span>
+        </a>
+        <a href="#projects" class="btn btn-outline magnetic" data-i18n="hero.portfolio">View Portfolio</a>
+        <a href="#contact" class="btn btn-text magnetic" data-i18n="hero.contact">Contact Me →</a>
+      </div>
+    </div>
+
+    <div class="hero-portrait reveal-scale" data-delay="2">
+      <div class="portrait-ring"></div>
+      <div class="portrait-frame">
+        <img src="assets/profile/portrait.jpg" alt="Portrait of Ramazan Turganbayev" onerror="this.parentElement.classList.add('img-fallback')">
+      </div>
+      <div class="portrait-badge">
+        <span class="badge-num">8</span>
+        <span class="badge-label">Years<br>Wrestling</span>
+      </div>
+      <div class="portrait-badge portrait-badge-2">
+        <span class="badge-num">15+</span>
+        <span class="badge-label">Projects<br>Shipped</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+    <span class="scroll-indicator-line"></span>
+    <span data-i18n="hero.scroll">Scroll</span>
+  </a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">01 — <span data-i18n="about.eyebrow">About</span></p>
+      <h2 class="section-title" data-i18n="about.title">The teacher who codes.<br>The developer who teaches.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <div class="about-image-frame">
+          <img src="assets/profile/about.jpg" alt="Ramazan Turganbayev working" onerror="this.parentElement.classList.add('img-fallback')">
+        </div>
+        <div class="about-image-glow"></div>
+      </div>
+
+      <div class="about-copy reveal-right">
+        <p class="about-lede">
+          I stand at the intersection of two crafts most people keep separate: teaching people how
+          computers think, and building the software that makes them think faster.
+        </p>
+        <p>
+          For the past several years I've taught Informatics in Turkistan, Kazakhstan — turning
+          abstract concepts like algorithms, logic and data structures into lessons students actually
+          look forward to. Outside the classroom, I write production code: web applications, AI‑assisted
+          tools, embedded robotics and learning platforms that put the same ideas I teach into practice.
+        </p>
+        <p>
+          I believe the best educators are also builders. Every tool I ship — from an LMS for chemistry
+          students to a colour‑sorting robot built with Arduino — is a way of testing whether the ideas
+          I teach actually hold up in the real world.
+        </p>
+
+        <div class="about-values">
+          <div class="value-card glass reveal-up" data-delay="1">
+            <span class="value-icon" aria-hidden="true">◆</span>
+            <h3 data-i18n="about.mission.title">Mission</h3>
+            <p data-i18n="about.mission.text">Make technology and computer science genuinely understandable — in the classroom and in the products I build.</p>
+          </div>
+          <div class="value-card glass reveal-up" data-delay="2">
+            <span class="value-icon" aria-hidden="true">◇</span>
+            <h3 data-i18n="about.vision.title">Vision</h3>
+            <p data-i18n="about.vision.text">A generation of students who see AI and software not as a mystery, but as a tool they can shape.</p>
+          </div>
+          <div class="value-card glass reveal-up" data-delay="3">
+            <span class="value-icon" aria-hidden="true">◈</span>
+            <h3 data-i18n="about.values.title">Values</h3>
+            <p data-i18n="about.values.text">Discipline from the wrestling mat, precision from engineering, patience from the classroom.</p>
+          </div>
+        </div>
+
+        <div class="about-tags">
+          <span class="tag">Education</span>
+          <span class="tag">AI &amp; Automation</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">Robotics</span>
+          <span class="tag">Greek‑Roman Wrestling</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="mini-timeline reveal-up">
+      <div class="mini-timeline-item">
+        <span class="mini-year">2016</span>
+        <p>Began Greek‑Roman wrestling training — discipline that still shapes how I work.</p>
+      </div>
+      <div class="mini-timeline-item">
+        <span class="mini-year">2020</span>
+        <p>Graduated university and started teaching Informatics.</p>
+      </div>
+      <div class="mini-timeline-item">
+        <span class="mini-year">2022</span>
+        <p>Shipped first independent web applications and automation scripts.</p>
+      </div>
+      <div class="mini-timeline-item">
+        <span class="mini-year">2024</span>
+        <p>Began building AI‑assisted tools and educational platforms full time alongside teaching.</p>
+      </div>
+      <div class="mini-timeline-item">
+        <span class="mini-year">2026</span>
+        <p>Launched this portfolio — a growing archive of everything I build and teach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATISTICS ============ -->
+<section class="section statistics" id="statistics">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card glass reveal-up" data-delay="1">
+        <span class="stat-num" data-count="15">0</span><span class="stat-suffix">+</span>
+        <p data-i18n="stats.projects">Projects Completed</p>
+      </div>
+      <div class="stat-card glass reveal-up" data-delay="2">
+        <span class="stat-num" data-count="12">0</span><span class="stat-suffix">+</span>
+        <p data-i18n="stats.tech">Technologies Used</p>
+      </div>
+      <div class="stat-card glass reveal-up" data-delay="3">
+        <span class="stat-num" data-count="6">0</span>
+        <p data-i18n="stats.certs">Certificates Earned</p>
+      </div>
+      <div class="stat-card glass reveal-up" data-delay="4">
+        <span class="stat-num" data-count="4">0</span><span class="stat-suffix">+</span>
+        <p data-i18n="stats.exp">Years of Experience</p>
+      </div>
+      <div class="stat-card glass reveal-up" data-delay="5">
+        <span class="stat-num" data-count="300">0</span><span class="stat-suffix">+</span>
+        <p data-i18n="stats.students">Students Taught</p>
+      </div>
+      <div class="stat-card glass reveal-up" data-delay="6">
+        <span class="stat-num" data-count="20">0</span><span class="stat-suffix">+</span>
+        <p data-i18n="stats.repos">Repositories</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">02 — <span data-i18n="skills.eyebrow">Skills</span></p>
+      <h2 class="section-title" data-i18n="skills.title">Tools I reach for daily.</h2>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-category glass reveal-up" data-delay="1">
+        <h3>Frontend</h3>
+        <div class="skill-row" data-level="92"><span>HTML</span><div class="skill-track"><div class="skill-fill"></div></div><em>92%</em></div>
+        <div class="skill-row" data-level="88"><span>CSS</span><div class="skill-track"><div class="skill-fill"></div></div><em>88%</em></div>
+        <div class="skill-row" data-level="85"><span>JavaScript</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+      </div>
+
+      <div class="skill-category glass reveal-up" data-delay="2">
+        <h3>Backend</h3>
+        <div class="skill-row" data-level="78"><span>PHP</span><div class="skill-track"><div class="skill-fill"></div></div><em>78%</em></div>
+        <div class="skill-row" data-level="80"><span>MySQL</span><div class="skill-track"><div class="skill-fill"></div></div><em>80%</em></div>
+      </div>
+
+      <div class="skill-category glass reveal-up" data-delay="3">
+        <h3>Programming</h3>
+        <div class="skill-row" data-level="88"><span>Python</span><div class="skill-track"><div class="skill-fill"></div></div><em>88%</em></div>
+        <div class="skill-row" data-level="75"><span>Arduino</span><div class="skill-track"><div class="skill-fill"></div></div><em>75%</em></div>
+        <div class="skill-row" data-level="65"><span>C++</span><div class="skill-track"><div class="skill-fill"></div></div><em>65%</em></div>
+      </div>
+
+      <div class="skill-category glass reveal-up" data-delay="4">
+        <h3>AI</h3>
+        <div class="skill-row" data-level="90"><span>ChatGPT</span><div class="skill-track"><div class="skill-fill"></div></div><em>90%</em></div>
+        <div class="skill-row" data-level="90"><span>Claude</span><div class="skill-track"><div class="skill-fill"></div></div><em>90%</em></div>
+        <div class="skill-row" data-level="82"><span>Gemini</span><div class="skill-track"><div class="skill-fill"></div></div><em>82%</em></div>
+        <div class="skill-row" data-level="85"><span>Cursor AI</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+      </div>
+
+      <div class="skill-category glass reveal-up" data-delay="5">
+        <h3>Design</h3>
+        <div class="skill-row" data-level="72"><span>Photoshop</span><div class="skill-track"><div class="skill-fill"></div></div><em>72%</em></div>
+        <div class="skill-row" data-level="60"><span>Blender</span><div class="skill-track"><div class="skill-fill"></div></div><em>60%</em></div>
+        <div class="skill-row" data-level="80"><span>Figma</span><div class="skill-track"><div class="skill-fill"></div></div><em>80%</em></div>
+      </div>
+
+      <div class="skill-category glass reveal-up" data-delay="6">
+        <h3>Tooling</h3>
+        <div class="skill-row" data-level="85"><span>Git</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+        <div class="skill-row" data-level="85"><span>GitHub</span><div class="skill-track"><div class="skill-fill"></div></div><em>85%</em></div>
+        <div class="skill-row" data-level="90"><span>VS Code</span><div class="skill-track"><div class="skill-fill"></div></div><em>90%</em></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section experience" id="experience">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">03 — <span data-i18n="exp.eyebrow">Experience</span></p>
+      <h2 class="section-title" data-i18n="exp.title">Where I've put the work in.</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2020 — Present</span>
+          <h3>Informatics Teacher</h3>
+          <p class="timeline-org">Secondary School, Turkistan</p>
+          <p class="timeline-desc">Design and deliver the Informatics curriculum — algorithms, programming
+            fundamentals, and digital literacy — for students across multiple grade levels, with a focus
+            on project‑based, hands‑on learning.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2022 — Present</span>
+          <h3>Freelance Web Developer</h3>
+          <p class="timeline-org">Independent</p>
+          <p class="timeline-desc">Design and build responsive websites and small web applications for
+            local clients — landing pages, event sites, and internal tools — from first sketch to launch.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2023 — Present</span>
+          <h3>EdTech Product Builder</h3>
+          <p class="timeline-org">Personal Projects</p>
+          <p class="timeline-desc">Built EasyChemLearn LMS, a student management system, and a teacher
+            dashboard — tools born directly out of problems I saw in my own classroom.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2024 — Present</span>
+          <h3>AI Tooling &amp; Automation</h3>
+          <p class="timeline-org">Personal Projects</p>
+          <p class="timeline-desc">Explore applied AI — prompt‑driven tools, AI‑assisted resume and content
+            builders, and automation scripts that remove repetitive work from teaching and development.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2021</span>
+          <h3>Robotics Internship — Arduino Systems</h3>
+          <p class="timeline-org">Local Robotics Workshop</p>
+          <p class="timeline-desc">Hands‑on internship building sensor‑driven Arduino systems, including
+            an early version of the colour‑sorting robot later featured in my project work.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="section education" id="education">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">04 — <span data-i18n="edu.eyebrow">Education</span></p>
+      <h2 class="section-title" data-i18n="edu.title">Foundations.</h2>
+    </div>
+
+    <div class="edu-timeline">
+      <div class="edu-card glass reveal-up" data-delay="1">
+        <div class="edu-icon" aria-hidden="true">🎓</div>
+        <span class="edu-year">2016 — 2020</span>
+        <h3>Bachelor's Degree — Informatics &amp; Computer Science Education</h3>
+        <p>Pedagogical university, Kazakhstan. Specialised in teaching methodology for
+          computer science, combined with core programming and systems coursework.</p>
+        <ul class="edu-achievements">
+          <li>Graduated with distinction in teaching practicum</li>
+          <li>Final thesis on gamified learning for programming fundamentals</li>
+        </ul>
+      </div>
+
+      <div class="edu-card glass reveal-up" data-delay="2">
+        <div class="edu-icon" aria-hidden="true">📘</div>
+        <span class="edu-year">2020 — Present</span>
+        <h3>Continuing Professional Development</h3>
+        <p>Ongoing self‑directed study in AI systems, modern web development and educational
+          technology through applied projects, online coursework and certification programmes.</p>
+        <ul class="edu-achievements">
+          <li>Multiple completed certifications in web development and AI tools</li>
+          <li>Regular contributor to open teaching‑resource repositories</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPORTS ============ -->
+<section class="section sports" id="sports">
+  <div class="sports-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">05 — <span data-i18n="sports.eyebrow">Sports</span></p>
+      <h2 class="section-title" data-i18n="sports.title">Greek‑Roman Wrestling.</h2>
+      <p class="section-sub" data-i18n="sports.sub">8 years on the mat — the same discipline shows up in how I teach and how I build.</p>
+    </div>
+
+    <div class="sports-grid">
+      <div class="sports-stats reveal-left">
+        <div class="sports-stat glass">
+          <span class="stat-num" data-count="8">0</span>
+          <p>Years of Training</p>
+        </div>
+        <div class="sports-stat glass">
+          <span class="stat-num" data-count="30">0</span><span class="stat-suffix">+</span>
+          <p>Competitions</p>
+        </div>
+        <div class="sports-stat glass">
+          <span class="stat-num" data-count="9">0</span>
+          <p>Regional Medals</p>
+        </div>
+      </div>
+
+      <div class="sports-timeline reveal-right">
+        <div class="sports-tl-item">
+          <span class="sports-tl-year">2016</span>
+          <p>Started training in Greek‑Roman wrestling.</p>
+        </div>
+        <div class="sports-tl-item">
+          <span class="sports-tl-year">2019</span>
+          <p>First regional championship podium finish.</p>
+        </div>
+        <div class="sports-tl-item">
+          <span class="sports-tl-year">2022</span>
+          <p>Began coaching younger students informally alongside my own training.</p>
+        </div>
+        <div class="sports-tl-item">
+          <span class="sports-tl-year">2024</span>
+          <p>Continued competitive training while teaching full time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sports-gallery reveal-up">
+      <div class="sports-photo img-fallback" style="--i:1"></div>
+      <div class="sports-photo img-fallback" style="--i:2"></div>
+      <div class="sports-photo img-fallback" style="--i:3"></div>
+      <div class="sports-photo img-fallback" style="--i:4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">06 — <span data-i18n="proj.eyebrow">Projects</span></p>
+      <h2 class="section-title" data-i18n="proj.title">Selected work.</h2>
+    </div>
+
+    <div class="projects-controls reveal-up">
+      <div class="project-search">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 5L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14"/></svg>
+        <input type="search" id="projectSearch" placeholder="Search projects…" aria-label="Search projects">
+      </div>
+      <div class="project-filters" id="projectFilters" role="tablist" aria-label="Project categories">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="ai">AI Tools</button>
+        <button class="filter-btn" data-filter="education">Education</button>
+        <button class="filter-btn" data-filter="robotics">Robotics</button>
+      </div>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid"><!-- populated by script.js --></div>
+  </div>
+</section>
+
+<!-- Project modal -->
+<div class="modal" id="projectModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" data-close aria-label="Close">✕</button>
+    <div class="modal-body" id="modalBody"><!-- populated by script.js --></div>
+  </div>
+</div>
+
+<!-- ============ CERTIFICATES ============ -->
+<section class="section certificates" id="certificates">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">07 — <span data-i18n="cert.eyebrow">Certificates</span></p>
+      <h2 class="section-title" data-i18n="cert.title">Recognised learning.</h2>
+    </div>
+    <div class="cert-grid" id="certGrid"><!-- populated by script.js --></div>
+  </div>
+</section>
+
+<div class="lightbox" id="certLightbox" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <button class="modal-close" data-close aria-label="Close">✕</button>
+  <img id="certLightboxImg" src="" alt="">
+</div>
+
+<!-- ============ GALLERY ============ -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">08 — <span data-i18n="gal.eyebrow">Gallery</span></p>
+      <h2 class="section-title" data-i18n="gal.title">Moments &amp; milestones.</h2>
+    </div>
+
+    <div class="gallery-filters reveal-up" id="galleryFilters">
+      <button class="filter-btn active" data-gfilter="all">All</button>
+      <button class="filter-btn" data-gfilter="teaching">Teaching</button>
+      <button class="filter-btn" data-gfilter="wrestling">Wrestling</button>
+      <button class="filter-btn" data-gfilter="dev">Development</button>
+      <button class="filter-btn" data-gfilter="events">Events</button>
+    </div>
+
+    <div class="masonry" id="masonryGrid"><!-- populated by script.js --></div>
+  </div>
+</section>
+
+<div class="lightbox" id="galleryLightbox" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <button class="modal-close" data-close aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+  <img id="galleryLightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+  <a class="lightbox-download" id="lightboxDownload" download aria-label="Download image">⬇</a>
+</div>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-head reveal-up center">
+      <p class="section-eyebrow">09 — <span data-i18n="test.eyebrow">Testimonials</span></p>
+      <h2 class="section-title" data-i18n="test.title">What people say.</h2>
+    </div>
+
+    <div class="testi-slider reveal-up">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card glass">
+          <p>"Ramazan explains algorithms the way a good coach explains footwork — one step at a
+          time, and suddenly the whole thing clicks. Our students genuinely enjoy his classes."</p>
+          <div class="testi-author"><strong>A. Zhaksylykova</strong><span>School Deputy Director, Turkistan</span></div>
+        </div>
+        <div class="testi-card glass">
+          <p>"He built our club's registration site in under two weeks, listened to every piece of
+          feedback, and it still runs without a single issue a year later."</p>
+          <div class="testi-author"><strong>D. Yerlanov</strong><span>Local Business Owner</span></div>
+        </div>
+        <div class="testi-card glass">
+          <p>"Rare to meet a teacher who codes at this level. The dashboard he built saved our
+          department hours of manual grading every week."</p>
+          <div class="testi-author"><strong>S. Bekova</strong><span>Colleague, Informatics Department</span></div>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section class="section blog" id="blog">
+  <div class="container">
+    <div class="section-head reveal-up">
+      <p class="section-eyebrow">10 — <span data-i18n="blog.eyebrow">Blog</span></p>
+      <h2 class="section-title" data-i18n="blog.title">Notes on teaching &amp; building.</h2>
+    </div>
+
+    <div class="blog-grid">
+      <article class="blog-card glass reveal-up" data-delay="1">
+        <span class="blog-tag">Education</span>
+        <h3>Teaching Algorithms Without a Whiteboard</h3>
+        <p>How I use everyday classroom objects to teach sorting and searching before a single
+          line of code is written.</p>
+        <span class="blog-soon">Coming soon</span>
+      </article>
+      <article class="blog-card glass reveal-up" data-delay="2">
+        <span class="blog-tag">AI</span>
+        <h3>Where AI Tools Actually Help Students Learn</h3>
+        <p>A practical look at which AI‑assisted workflows help students think, and which ones let
+          them skip thinking entirely.</p>
+        <span class="blog-soon">Coming soon</span>
+      </article>
+      <article class="blog-card glass reveal-up" data-delay="3">
+        <span class="blog-tag">Development</span>
+        <h3>Building an LMS as a Solo Teacher‑Developer</h3>
+        <p>Lessons from shipping EasyChemLearn — scope, students as real users, and what I'd do
+          differently.</p>
+        <span class="blog-soon">Coming soon</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-head reveal-up center">
+      <p class="section-eyebrow">11 — <span data-i18n="contact.eyebrow">Contact</span></p>
+      <h2 class="section-title" data-i18n="contact.title">Let's build something.</h2>
+      <p class="section-sub" data-i18n="contact.sub">Open to teaching collaborations, freelance web projects, and interesting problems in general.</p>
+    </div>
+
+    <div class="contact-grid">
+      <a class="contact-card glass reveal-up" data-delay="1" href="tel:+77716946552">
+        <span class="contact-icon" aria-hidden="true">📞</span>
+        <h3>Phone</h3>
+        <p>+7 771 694 6552</p>
+        <button type="button" class="copy-btn" data-copy="+7 771 694 6552" onclick="event.preventDefault()">Copy</button>
+      </a>
+      <a class="contact-card glass reveal-up" data-delay="2" href="mailto:turganbaevramazan4@gmail.com">
+        <span class="contact-icon" aria-hidden="true">✉️</span>
+        <h3>Email</h3>
+        <p>turganbaevramazan4@gmail.com</p>
+        <button type="button" class="copy-btn" data-copy="turganbaevramazan4@gmail.com" onclick="event.preventDefault()">Copy</button>
+      </a>
+      <a class="contact-card glass reveal-up" data-delay="3" href="https://wa.me/77716946552" target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">💬</span>
+        <h3>WhatsApp</h3>
+        <p>Message me directly</p>
+        <span class="copy-btn as-link">Open</span>
+      </a>
+      <a class="contact-card glass reveal-up" data-delay="4" href="https://www.instagram.com/t.ramazan_707" target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">📷</span>
+        <h3>Instagram</h3>
+        <p>@t.ramazan_707</p>
+        <span class="copy-btn as-link">Open</span>
+      </a>
+    </div>
+
+    <div class="contact-meta reveal-up">
+      <span>🕒 <span id="localTime">--:--</span> local time</span>
+      <span>📍 Turkistan, Kazakhstan</span>
+      <span>🗣️ Kazakh · Russian · English</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-divider" aria-hidden="true"></div>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">RT</span>
+      <p>Ramazan Turganbayev — Informatics Teacher, Web Developer, AI Enthusiast.</p>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://www.instagram.com/t.ramazan_707" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      <a href="https://wa.me/77716946552" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:turganbaevramazan4@gmail.com" aria-label="Email">Email</a>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  </div>
+  <p class="footer-copy">© 2026 Ramazan Turganbayev. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
